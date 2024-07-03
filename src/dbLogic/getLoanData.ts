@@ -1,13 +1,31 @@
-import { LoanModel } from "../data/loan";
+import { LoanModel } from "../schemas/loan";
 
-export const getLoanData = async () => {
+// Function to get all active (not paid off) loan data from the database
+export const getActiveLoanData = async () => {
+    return await _queryDB(true);
+};
+
+// Function to get all paid off loan data from the database
+export const getPaidOffLoanData = async () => {
+    return await _queryDB(false);
+};
+
+const _queryDB = async(paidOff: boolean) => {
     try {
         console.log('Searching in db...');
-        const loandData = await LoanModel.find({ paidOff: false }).exec();
-        console.log('Query complete!')
-        return loandData;
+
+        // Query the database
+        const loanData = await LoanModel.find({ paidOff }).exec();
+
+        console.log('Query complete!');
+
+        // Return the queried loan data
+        return loanData;
     } catch (error) {
+        // Handle any errors that occur during the query operation
         console.error('Error when querying DB', error);
+
+        // Return an empty array in case of an error
         return [];
-    }
+    }  
 };

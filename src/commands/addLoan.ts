@@ -1,8 +1,8 @@
 import { CommandInteraction, ModalBuilder, TextInputBuilder, TextInputStyle, ActionRowBuilder, ModalActionRowComponentBuilder } from "discord.js";
-import { Command } from "./commandInterface";
+import { ICommand } from "../interfaces/command";
 
 // Requests the modal to create a new loan
-export const addLoan: Command = {
+export const addLoan: ICommand = {
     name: "addloan",
     description: "Add a new loan",
     run: async (interaction: CommandInteraction) => {
@@ -47,6 +47,7 @@ export const addLoan: Command = {
             .setStyle(TextInputStyle.Short)
             .setRequired(false);
 
+        // Create action rows to hold the text input components
         const borrowerRow = new ActionRowBuilder<ModalActionRowComponentBuilder>()
 			.addComponents(borrowerInput);
         const categoryRow = new ActionRowBuilder<ModalActionRowComponentBuilder>()
