@@ -2,12 +2,12 @@ import { LoanModel } from "../schemas/loan";
 
 // Function to get all active (not paid off) loan data from the database
 export const getActiveLoanData = async () => {
-    return await _queryDB(true);
+    return await _queryDB(false);
 };
 
 // Function to get all paid off loan data from the database
 export const getPaidOffLoanData = async () => {
-    return await _queryDB(false);
+    return await _queryDB(true);
 };
 
 const _queryDB = async(paidOff: boolean) => {
