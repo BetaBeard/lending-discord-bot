@@ -25,7 +25,7 @@ const _queryDB = async(paidOff: boolean) => {
         // Handle any errors that occur during the query operation
         console.error('Error when querying DB', error);
 
-        // Return an empty array in case of an error
-        return [];
+        // Throw error up to be catch by specific command
+        throw error;
     }  
 };
