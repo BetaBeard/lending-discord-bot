@@ -25,6 +25,8 @@ Once you've completed all the pre-requisites you start up the bot and use it in 
 This command will transpile your ts files and start the bot, and if everything goes right you'll see three messages in your terminal:
 > Bot is starting...
 
+> Connecting to database...
+
 > Database Connected!
 
 > lending-bot is online
